@@ -1,0 +1,15 @@
+.header {
+  padding: 27px 0;
+  background: #F6F7FF;
+}
+
+.header__wrapper {
+  @include container;
+  @include base-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.header__logo {
+  margin-right: 58px;
+}

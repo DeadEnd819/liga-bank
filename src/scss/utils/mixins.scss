@@ -17,3 +17,15 @@
   padding: 0;
   margin: 0;
 }
+
+@mixin container {
+  width: 1366px;
+  margin: 0 auto;
+  padding: 0 98px;
+  box-sizing: border-box;
+}
+
+@mixin base-flex {
+  display: flex;
+  flex-wrap: wrap;
+}

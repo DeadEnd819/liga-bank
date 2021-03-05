@@ -16,7 +16,7 @@ const Main = () => {
             <li>
               <label htmlFor="from">У меня есть</label>
               <input type="text" id="from"/>
-              <select>
+              <select type="number">
                 <option>USD</option>
                 <option>RUB</option>
               </select>
