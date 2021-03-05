@@ -29,7 +29,7 @@ const Header = () => {
             <ul className="main-nav__list main-nav__list--user">
               <li className="main-nav__item main-nav__item--user">
                 <a className="main-nav__link main-nav__link--user" href="#">
-                  <img className="main-nav__link--icon" src={login} alt="Иконка входа"/>
+                  <img className="main-nav__link--icon" src={login} alt="Иконка входа" />
                   Войти в Интернет-банк
                 </a>
               </li>
