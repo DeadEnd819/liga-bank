@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+#Info
+
+Время работы над проектом - 3 часа.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
