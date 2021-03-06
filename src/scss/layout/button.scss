@@ -1,0 +1,20 @@
+.button {
+  @include base-font(500);
+  box-sizing: border-box;
+  text-align: center;
+  font-size: inherit;
+  color: #F6F7FF;
+  background-color: #2C36F2;
+  border-radius: 4px;
+  border: none;
+
+  &--light {
+    color: #1F1E25;
+    background-color: #F6F7FF;
+  }
+
+  &:focus,
+  &:hover {
+    opacity: 0.8;
+  }
+}

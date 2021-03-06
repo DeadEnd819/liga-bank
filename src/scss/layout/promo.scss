@@ -7,17 +7,47 @@
 }
 
 .promo__wrapper {
-@include container;
+  @include container;
+  padding-top: 61px;
+  padding-bottom: 53px;
+}
+
+.promo__container {
+  box-sizing: border-box;
+  width: 1044px;
+  min-height: 286px;
+  padding-top: 41px;
+  padding-left: 171px;
+  background-image: url("../../img/cards.png");
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+.promo__title,
+.promo__text {
+  @include reset-text;
 }
 
 .promo__title {
-
+  @include base-font(700);
+  font-size: 54px;
+  line-height: 63px;
+  color: #F6F7FF;
 }
 
 .promo__text {
-
+  margin-top: 7px;
+  margin-bottom: 34px;
+  font-size: 22px;
+  line-height: 26px;
+  color: #E0E1EA;
 }
 
 .promo__link {
-
+  display: block;
+  width: 234px;
+  min-height: 53px;
+  padding: 15px 0;
+  font-size: 18px;
+  line-height: 21px;
 }
