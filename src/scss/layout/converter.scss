@@ -1,0 +1,16 @@
+.converter__wrapper {
+  @include container;
+  padding-top: 46px;
+  padding-bottom: 110px;
+}
+
+.converter__title {
+  @include reset-text;
+  margin-bottom: 50px;
+  font-size: 41px;
+  line-height: 57px;
+}
+
+.converter__form {
+  margin-bottom: 100px;
+}

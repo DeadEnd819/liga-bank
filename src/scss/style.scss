@@ -1,3 +1,4 @@
+//********  Global ************//
 @import "./base/normalize.scss";
 @import "./base/fonts.scss";
 @import "./utils/mixins";
@@ -15,11 +16,8 @@
 //*******************************
 
 //********  Converter *********//
-
-//*******************************
-
-//********  Logs **************//
-
+@import "./layout/converter.scss";
+@import "./layout/form.scss";
 //*******************************
 
 //********  Footer ************//
