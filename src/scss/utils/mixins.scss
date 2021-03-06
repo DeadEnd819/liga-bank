@@ -5,8 +5,7 @@
 
 @mixin reset-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  @include reset-text
 }
 
 @mixin reset-text {
