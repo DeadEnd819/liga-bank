@@ -1,0 +1,39 @@
+.social {
+  @include base-flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 102px;
+  padding-top: 12px;
+}
+
+//.social__item {
+//
+//}
+
+.social__link {
+  position: relative;
+  display: block;
+
+  &:focus,
+  &:hover {
+    color: #2C36F2;
+  }
+}
+
+//.social__icon {
+//  &--facebook {
+//
+//  }
+//
+//  &--instagram {
+//
+//  }
+//
+//  &--twitter {
+//
+//  }
+//
+//  &--youtube {
+//
+//  }
+//}

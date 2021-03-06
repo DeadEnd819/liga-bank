@@ -2,6 +2,29 @@
 @import "./base/fonts.scss";
 @import "./utils/mixins";
 @import "./base/global.scss";
+//*******************************
 
+//********  Header ************//
 @import "./layout/header.scss";
 @import "./layout/main-nav.scss";
+//*******************************
+
+//********  Promo ************//
+@import "./layout/promo.scss";
+//*******************************
+
+//********  Converter *********//
+
+//*******************************
+
+//********  Logs **************//
+
+//*******************************
+
+//********  Footer ************//
+@import "./layout/footer.scss";
+@import "./layout/copyright.scss";
+@import "./layout/footer-navigation.scss";
+@import "./layout/contacts.scss";
+@import "./layout/social.scss";
+//*******************************

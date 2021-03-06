@@ -1,14 +1,12 @@
 import React from 'react';
+import Promo from "../promo/promo";
 
 const Main = () => {
   return (
-    <main>
+    <main className="main">
       <h1 className="visually-hidden">Лига Банк - Конвертер валют</h1>
-      <section>
-        <h2>Лига Банк</h2>
-        <p>Кредиты на любой случай</p>
-        <button>Рассчитать кредит</button>
-      </section>
+      <Promo />
+
       <section>
         <h2>Конвертер валют</h2>
         <form>

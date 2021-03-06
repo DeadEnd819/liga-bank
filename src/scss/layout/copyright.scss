@@ -1,0 +1,14 @@
+.copyright__logo {
+  margin-bottom: 12px;
+}
+
+.copyright__text {
+  @include reset-text;
+  font-size: 12px;
+  line-height: 17.8px;
+  color: #707C87;
+}
+
+.copyright__icon {
+  font-size: 14px;
+}

@@ -1,0 +1,23 @@
+.promo {
+  min-height: 400px;
+  background-image: url("../../img/promo-background.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-color: #2C36F2;
+}
+
+.promo__wrapper {
+@include container;
+}
+
+.promo__title {
+
+}
+
+.promo__text {
+
+}
+
+.promo__link {
+
+}

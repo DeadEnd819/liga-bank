@@ -1,0 +1,20 @@
+.footer-nav {
+  padding-top: 2px;
+  padding-left: 1px;
+}
+
+.footer-nav__item {
+  padding: 4px 0;
+}
+
+.footer-nav__link {
+  @include base-font(500);
+  display: block;
+  line-height: 23px;
+  color: #1F1E25;
+
+  &:focus,
+  &:hover {
+    color: #2C36F2;
+  }
+}

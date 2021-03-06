@@ -2,7 +2,7 @@ import React from 'react';
 
 const FooterNavigation = () => {
   return (
-    <ul className="footer__nav footer-nav">
+    <ul className="footer__item footer-nav">
       <li className="footer-nav__item">
         <a className="footer-nav__link" href="#">Услуги</a>
       </li>

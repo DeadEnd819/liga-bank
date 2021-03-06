@@ -1,0 +1,21 @@
+.footer {
+
+  padding: 48px 0 50px 0;
+  background: #F6F7FF;
+}
+
+.footer__wrapper {
+  @include container;
+  @include base-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.footer__item {
+  @include reset-list;
+  margin-right: 80px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
