@@ -1,9 +1,11 @@
 import React from 'react';
 
-const NavigationItem = ({title}) => {
+const NavigationItem = ({block, title, isActive}) => {
+  const classActive = isActive ? ` ${block}-nav__link--active` : ``;
+
   return (
-    <li className="main-nav__item">
-      <a className="main-nav__link" href="#">{title}</a>
+    <li className={`${block}-nav__item`}>
+      <a className={`${block}-nav__link${classActive}`} href="#">{title}</a>
     </li>
   );
 };

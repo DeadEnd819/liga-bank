@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from "../navigation/navigation";
+import MainNavigation from "../main-navigation/main-navigation";
 import Logo from "../logo/logo";
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
       <header className="header">
         <div className="header__wrapper">
           <Logo block={`header`} />
-          <Navigation />
+          <MainNavigation />
         </div>
       </header>
   );
