@@ -26,8 +26,8 @@ const FormItem = (props) => {
 
         <div className="form__select-wrapper">
           <select className="form__select" value={selectedCurrency} onChange={onChangeCurrency}>
-            {currencyOptions.map((option) => (
-              <option key={option} value={option}>{option}</option>
+            {currencyOptions.map((option, index) => (
+              <option key={option + index} value={option}>{option}</option>
             ))}
           </select>
           <img className="form__icon" src={select} alt="Выбор валюты"/>

@@ -6,6 +6,7 @@ import mobile from './img/icon-mobile.svg'
 import phone from './img/icon-phone.svg'
 
 export const BACKEND_URL = `https://api.exchangeratesapi.io`;
+// export const BACKEND_URL = `http://api.openrates.io`;
 //  https://api.exchangeratesapi.io/latest?base=USD&symbols=USD,GBP,EUR,RUB,CNY
 export const REQUEST_TIMEOUT = 5000;
 
