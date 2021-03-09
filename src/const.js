@@ -10,9 +10,11 @@ export const BACKEND_URL = `https://api.exchangeratesapi.io`;
 //  https://api.exchangeratesapi.io/latest?base=USD&symbols=USD,GBP,EUR,RUB,CNY
 export const REQUEST_TIMEOUT = 5000;
 
+export const MAX_DAYS = 7;
 export const ACTIVE_PAGE = `Конвертер валют`;
 export const NAVIGATION_TITLES = [`Услуги`, `Рассчитать кредит`, `Конвертер валют`, `Контакты`, `Задать вопрос`];
 export const BASE_SYMBOLS = [`RUB`, `USD`, `EUR`, `GBR`, `CNY`];
+export const BASE_DATE = `latest`;
 
 export const CONTACTS_ITEMS = [
   {

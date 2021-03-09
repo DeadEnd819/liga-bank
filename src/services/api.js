@@ -5,6 +5,7 @@ export const createAPI = () => {
   const api = axios.create({
     baseURL: BACKEND_URL,
     timeout: REQUEST_TIMEOUT,
+    Header: { "Access-Control-Allow-Origin": "origin-list" }
   });
 
   const onSuccess = (response) => response;
