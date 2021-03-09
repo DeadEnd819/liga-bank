@@ -1,23 +1,33 @@
 import React from 'react';
-import arrow from '../../img/icon-arrow.svg'
+import {connect} from 'react-redux';
+import HistoryItem from '../history-item/history-item';
+import {getHistory} from '../../store/selectors';
+import {clearHistory} from '../../store/action';
 
-const History = () => {
+const History = ({history, clearHistory}) => {
+  const items = !history.length ?
+    <li><p>Нет данных</p></li> :
+    history.map((data, index) => <HistoryItem key={data + index} data={data} />);
+
   return (
     <div className="converter__history history">
       <h2 className="history__title">История конвертация</h2>
       <ul className="history__list">
-        <li className="history__item">
-          <time className="history__date" dateTime="25.11.2020">25.11.2020</time>
-          <p className="history__sale">1000 <span className="history__symbol">RUB</span></p>
-          <span className="history__icon-wrapper">
-                <img className="history__icon" src={arrow} alt="Иконка стрелка"/>
-              </span>
-          <p className="history__buy">13,1234 <span className="history__symbol">USD</span></p>
-        </li>
+        {items}
       </ul>
-      <button className="history__button button">Очистить историю</button>
+      <button className="history__button button" onClick={() => clearHistory()}>Очистить историю</button>
     </div>
   );
 };
 
-export default History;
+const mapStateToProps = (store) => ({
+  history: getHistory(store),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  clearHistory(data) {
+    dispatch(clearHistory(data));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(History);

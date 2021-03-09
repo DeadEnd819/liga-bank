@@ -28,16 +28,11 @@ export const setLoadingFlag = (bool) => ({
   payload: bool,
 });
 
-// export const setCurrencyToSale = (amount) => ({
-//   type: `CHANGE_TO_SALE`,
-//   payload: amount,
-// });
-//
-// export const setCurrencyToBuy = (amount) => ({
-//   type: `CHANGE_TO_BUY`,
-//   payload: amount,
-// });
+export const setHistory = (data) => ({
+  type: `UPDATED_HISTORY`,
+  payload: data,
+});
 
-
-
-
+export const clearHistory = () => ({
+  type: `CLEAR_HISTORY`
+});

@@ -1,13 +1,22 @@
 import React, {useEffect, useCallback} from 'react';
-import { connect } from "react-redux";
-import DatePicker from "react-datepicker";
-import FormItem from "../form-item/form-item";
-import {BASE_SYMBOLS, MAX_DAYS} from "../../const";
-import {getMinDate, getDateTime} from "../../utils";
+import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
+import FormItem from '../form-item/form-item';
+import {BASE_SYMBOLS, MAX_DAYS} from '../../const';
+import {getMinDate, getDateTime} from '../../utils';
 
-import {getDate, getRate, getSaleSymbol, getBuySymbol, getCurrencyToSale, getCurrencyToBuy, getLoadingFlag} from "../../store/selectors";
+import {
+  getDate,
+  getRate,
+  getSaleSymbol,
+  getBuySymbol,
+  getCurrencyToSale,
+  getCurrencyToBuy,
+  getLoadingFlag,
+  getCurrentData
+} from "../../store/selectors";
 import {fetchData} from "../../store/api-actions";
-import {setDate, setSaleSymbol, setBuySymbol, setCourse, setLoadingFlag} from "../../store/action";
+import {setDate, setSaleSymbol, setBuySymbol, setCourse, setLoadingFlag, setHistory} from "../../store/action";
 
 import "react-datepicker/dist/react-datepicker.css";
 import arrows from '../../img/icon-arrows.svg'
@@ -20,12 +29,14 @@ const Form = ({
                 buySymbol,
                 currencyToSale,
                 currencyToBuy,
+                currentData,
                 isLoadingTest,
                 setDateTest,
                 setSaleSymbol,
                 setBuySymbol,
                 setCourse,
                 loadDataTest,
+                setHistory
 }) => {
   useEffect(() => {
     loadDataTest();
@@ -51,8 +62,13 @@ const Form = ({
     setCourse((evt.target.value / rateTest), +evt.target.value);
   }, [rateTest]);
 
+  const handleFormSubmit = useCallback ((evt) => {
+    evt.preventDefault();
+    setHistory(currentData);
+  }, [currentData]);
+
   return (
-    <form className="converter__form form">
+    <form className="converter__form form" onSubmit={handleFormSubmit}>
       <div className="form__wrapper">
         <FormItem
           currencyOptions={BASE_SYMBOLS}
@@ -85,8 +101,7 @@ const Form = ({
           dateFormat="dd.MM.yyyy"
           className="form__calendar"
         />
-        {/*<input className="form__calendar" type="text" placeholder="" value="1.12.2020" readOnly />*/}
-        <button className="form__calendar-button button">Сохранить результат</button>
+        <button className="form__calendar-button button" type="submit">Сохранить результат</button>
         <img className="form__icon form__icon--calendar" src={calendar} alt="Иконка календарь"/>
       </div>
     </form>
@@ -101,6 +116,7 @@ const mapStateToProps = (store) => ({
   currencyToSale: getCurrencyToSale(store),
   currencyToBuy: getCurrencyToBuy(store),
   isLoadingTest: getLoadingFlag(store),
+  currentData: getCurrentData(store),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -120,6 +136,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setLoadingFlag(true));
     dispatch(fetchData(saleSymbol, buySymbol, getDateTime(date)));
   },
+  setHistory(data) {
+    dispatch(setHistory(data));
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

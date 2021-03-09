@@ -24,6 +24,7 @@ const FormItem = (props) => {
           value={amount}
           onChange={onChangeAmount}
           placeholder="0"
+          max="99999999"
           disabled={disabled}
         />
 
