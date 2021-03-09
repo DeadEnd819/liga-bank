@@ -9,7 +9,8 @@ const FormItem = (props) => {
     onChangeAmount,
     amount,
     labelId,
-    labelText
+    labelText,
+    disabled
   } = props
 
   return (
@@ -22,10 +23,12 @@ const FormItem = (props) => {
           id={labelId}
           value={amount}
           onChange={onChangeAmount}
-          placeholder="0" />
+          placeholder="0"
+          disabled={disabled}
+        />
 
         <div className="form__select-wrapper">
-          <select className="form__select" value={selectedCurrency} onChange={onChangeCurrency}>
+          <select className="form__select" value={selectedCurrency} onChange={onChangeCurrency} disabled={disabled}>
             {currencyOptions.map((option, index) => (
               <option key={option + index} value={option}>{option}</option>
             ))}

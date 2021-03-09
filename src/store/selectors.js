@@ -11,15 +11,15 @@ export const getSaleSymbol = (state) => {
 };
 
 export const getBuySymbol = (state) => {
-  return state.DATA.saleSymbol;
+  return state.DATA.buySymbol;
 };
 
 export const getCurrencyToSale = (state) => {
-  return state.DATA.exchangeRate;
+  return state.DATA.currencyToSale;
 };
 
 export const getCurrencyToBuy = (state) => {
-  return state.DATA.saleSymbol;
+  return state.DATA.currencyToBuy;
 };
 
 export const getLoadingFlag = (state) => {

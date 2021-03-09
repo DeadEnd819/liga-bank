@@ -13,9 +13,9 @@ export const fetchData = (
 ) => (dispatch, _getState, api) => (
   api.get(`/${date}?base=${fromCurrency}&symbols=${toCurrency}`)
     .then(({data}) => {
-      dispatch(setExchangeRate(...Object.values(data.rates)));
-      dispatch(setSaleSymbol(data.base));
+      dispatch(setSaleSymbol(fromCurrency));
       dispatch(setBuySymbol(toCurrency));
+      dispatch(setExchangeRate(...Object.values(data.rates)));
     })
     .then(() => dispatch(setLoadingFlag(false)))
     .catch(() => {

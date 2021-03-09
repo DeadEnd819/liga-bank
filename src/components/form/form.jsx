@@ -1,13 +1,13 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import { connect } from "react-redux";
 import DatePicker from "react-datepicker";
 import FormItem from "../form-item/form-item";
-import {MAX_DAYS, BACKEND_URL} from "../../const";
+import {BASE_SYMBOLS, MAX_DAYS} from "../../const";
 import {getMinDate, getDateTime} from "../../utils";
 
 import {getDate, getRate, getSaleSymbol, getBuySymbol, getCurrencyToSale, getCurrencyToBuy, getLoadingFlag} from "../../store/selectors";
 import {fetchData} from "../../store/api-actions";
-import {setDate, setCourse, setLoadingFlag} from "../../store/action";
+import {setDate, setSaleSymbol, setBuySymbol, setCourse, setLoadingFlag} from "../../store/action";
 
 import "react-datepicker/dist/react-datepicker.css";
 import arrows from '../../img/icon-arrows.svg'
@@ -22,122 +22,66 @@ const Form = ({
                 currencyToBuy,
                 isLoadingTest,
                 setDateTest,
+                setSaleSymbol,
+                setBuySymbol,
                 setCourse,
-                loadDataTest
+                loadDataTest,
 }) => {
-  const [date, setDate] = useState(new Date());
-  const [currencyOptions, setCurrencyOptions] = useState([]);
-  const [fromCurrency, setFromCurrency] = useState();
-  const [toCurrency, setToCurrency] = useState();
-  const [exchangeRate, setExchangeRate] = useState();
-  const [amount, setAmount] = useState(1);
-  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-
-useEffect(() => {
-  if (isLoadingTest) {
+  useEffect(() => {
     loadDataTest();
-  }
-}, [isLoadingTest]);
-
-  let toAmount, fromAmount
-  if (amountInFromCurrency) {
-    fromAmount = amount
-    toAmount = amount * exchangeRate
-  } else {
-    toAmount = amount
-    fromAmount = amount / exchangeRate
-  }
-
-  useEffect(() => {
-    fetch(`${BACKEND_URL}/latest?base=USD&symbols=GBP,EUR,RUB,CNY`)
-      .then(res => res.json())
-      .then(data => {
-        const firstCurrency = Object.keys(data.rates)[0]
-        setCurrencyOptions([data.base, ...Object.keys(data.rates)])
-        setFromCurrency(data.base)
-        setToCurrency(firstCurrency)
-        setExchangeRate(data.rates[firstCurrency])
-      })
-      .then(() => {
-        setIsLoading(true);
-      })
-      .catch((error) => {
-        throw error;
-      });
-  }, [setIsLoading]);
-
-  useEffect(() => {
-    if (fromCurrency !== null && toCurrency !== null) {
-      loadDataTest(fromCurrency, toCurrency, date);
-    }
-
-    if (fromCurrency != null && toCurrency != null) {
-      fetch(`${BACKEND_URL}/${getDateTime(date)}?base=${fromCurrency}&symbols=${toCurrency}`)
-        .then(res => res.json())
-        .then(data => setExchangeRate(data.rates[toCurrency]))
-        .catch((error) => {
-          throw error;
-        });
-    }
-  }, [date, fromCurrency, toCurrency]);
-
-  const handleDateChange = useCallback ((date) => {
-    setDate(date);
-    setDateTest(date);
-  },[]);
-
-  const handleFromCurrencyChange = useCallback ((evt) => {
-    setFromCurrency(evt.target.value)
-  },[]);
-
-  const handleToCurrencyChange = useCallback ((evt) => {
-    setToCurrency(evt.target.value)
   }, []);
 
-  const handleFromAmountChange = useCallback ((evt) => {
-    setAmount(evt.target.value)
-    setAmountInFromCurrency(true)
+  useEffect(() => {
+    if (rateTest) {
+      setCourse(1 , rateTest);
+    }
+  }, [rateTest]);
 
-    setCourse(+evt.target.value, (evt.target.value * rateTest));  //++++++++
+  useEffect(() => {
+    if (saleSymbol !== null && buySymbol !== null) {
+      loadDataTest(saleSymbol, buySymbol, dateTest);
+    }
+  }, [dateTest, saleSymbol, buySymbol]);
+
+  const handleFromAmountChange = useCallback ((evt) => {
+    setCourse(+evt.target.value, (evt.target.value * rateTest));
   },[rateTest]);
 
   const handleToAmountChange = useCallback ((evt) => {
-    setAmount(evt.target.value)
-    setAmountInFromCurrency(false)
-
-    setCourse((evt.target.value / rateTest), +evt.target.value);  //++++++++
+    setCourse((evt.target.value / rateTest), +evt.target.value);
   }, [rateTest]);
 
-  return !isLoading ? <h2>Loading...</h2> : (
+  return (
     <form className="converter__form form">
       <div className="form__wrapper">
         <FormItem
-          currencyOptions={currencyOptions}
-          selectedCurrency={fromCurrency}
-          onChangeCurrency={handleFromCurrencyChange}
+          currencyOptions={BASE_SYMBOLS}
+          selectedCurrency={saleSymbol}
+          onChangeCurrency={(evt) => setSaleSymbol(evt.target.value)}
           onChangeAmount={handleFromAmountChange}
-          amount={fromAmount}
+          amount={currencyToSale}
           labelId={`sale`}
           labelText={`У меня есть`}
+          disabled={isLoadingTest}
         />
         <FormItem
-          currencyOptions={currencyOptions}
-          selectedCurrency={toCurrency}
-          onChangeCurrency={handleToCurrencyChange}
+          currencyOptions={BASE_SYMBOLS}
+          selectedCurrency={buySymbol}
+          onChangeCurrency={(evt) => setBuySymbol(evt.target.value)}
           onChangeAmount={handleToAmountChange}
-          amount={toAmount}
+          amount={currencyToBuy}
           labelId={`buy`}
           labelText={`Хочу приобрести`}
+          disabled={isLoadingTest}
         />
         <img className="form__icon form__icon--arrows" src={arrows} alt="Иконка стрелки"/>
       </div>
       <div className="form__wrapper">
         <DatePicker
-          selected={date}
+          selected={dateTest}
           minDate={getMinDate(new Date(), MAX_DAYS)}
           maxDate={new Date()}
-          onChange={handleDateChange}
+          onChange={(date) => setDateTest(date)}
           dateFormat="dd.MM.yyyy"
           className="form__calendar"
         />
@@ -163,8 +107,14 @@ const mapDispatchToProps = (dispatch) => ({
   setDateTest(date) {
     dispatch(setDate(date));
   },
+  setSaleSymbol(symbol) {
+    dispatch(setSaleSymbol(symbol));
+  },
+  setBuySymbol(symbol) {
+    dispatch(setBuySymbol(symbol));
+  },
   setCourse(sale, buy) {
-    dispatch(setCourse(sale, buy));
+    dispatch(setCourse(+sale.toFixed(4), +buy.toFixed(4)));
   },
   loadDataTest(saleSymbol, buySymbol, date) {
     dispatch(setLoadingFlag(true));

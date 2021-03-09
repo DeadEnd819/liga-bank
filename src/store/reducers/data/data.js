@@ -1,13 +1,13 @@
 import {extend} from '../../../utils';
 
 const initialState = {
-  date: null,
+  date: new Date(),
   exchangeRate: null,
-  saleSymbol: null,
-  buySymbol: null,
+  saleSymbol: `RUB`,
+  buySymbol: `USD`,
   currencyToSale : 1,
   currencyToBuy: 1,
-  isLoading: true
+  isLoading: null,
 };
 
 const data = (state = initialState, action) => {
@@ -29,7 +29,7 @@ const data = (state = initialState, action) => {
         buySymbol: action.payload,
       });
     case `CHANGE_COURSE`:
-      console.log(action.payload);
+      // console.log(action.payload);
       return extend(state, {
         currencyToSale: action.payload.sale,
         currencyToBuy: action.payload.buy,
