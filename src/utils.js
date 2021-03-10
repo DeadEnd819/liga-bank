@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment';
 
 export const normalizeAmount = (amount) => {
   return amount.toString().replace(`.`, `,`);

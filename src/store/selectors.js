@@ -17,12 +17,12 @@ export const getBuySymbol = (state) => {
   return state.DATA.buySymbol;
 };
 
-export const getCurrencyToSale = (state) => {
-  return state.DATA.currencyToSale;
+export const getAmountToSale = (state) => {
+  return state.DATA.amountToSale;
 };
 
-export const getCurrencyToBuy = (state) => {
-  return state.DATA.currencyToBuy;
+export const getAmountToBuy = (state) => {
+  return state.DATA.amountToBuy;
 };
 
 export const getLoadingFlag = (state) => {
@@ -37,8 +37,8 @@ export const getCurrentData  = createSelector(
   getDate,
   getSaleSymbol,
   getBuySymbol,
-  getCurrencyToSale,
-  getCurrencyToBuy,
+  getAmountToSale,
+  getAmountToBuy,
   (date, saleSymbol, buySymbol, amountToSale, amountToBuy) => {
     return {
       date: getDateToHistory(date),

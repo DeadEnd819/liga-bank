@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactsItem from "../contacts-item/contacts-item";
+import ContactsItem from '../contacts-item/contacts-item';
 import {CONTACTS_ITEMS} from '../../const';
 
 const Contacts = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationItem from "../navigation-item/navigation-item";
+import NavigationItem from '../navigation-item/navigation-item';
 import {NAVIGATION_TITLES, ACTIVE_PAGE} from '../../const';
 
 const FooterNavigation = () => {

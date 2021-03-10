@@ -1,53 +1,49 @@
 import {extend} from '../../../utils';
+import {ActionType, BASE_SYMBOLS} from '../../../const';
+
+const {
+  CHANGE_DATE,
+  LOAD_RATE,
+  CHANGE_SALE_SYMBOL,
+  CHANGE_BUY_SYMBOL,
+  CHANGE_COURSE,
+  CHANGE_LOADING
+} = ActionType;
 
 const initialState = {
   date: new Date(),
   exchangeRate: null,
-  saleSymbol: `RUB`,
-  buySymbol: `USD`,
-  currencyToSale : 1,
-  currencyToBuy: 1,
+  saleSymbol: BASE_SYMBOLS[0],
+  buySymbol: BASE_SYMBOLS[1],
+  amountToSale : 1,
+  amountToBuy: 1,
   isLoading: null,
 };
 
 const data = (state = initialState, action) => {
   switch (action.type) {
-    case `CHANGE_DATE`:
+    case CHANGE_DATE:
       return extend(state, {
         date: action.payload,
       });
-    case `LOAD_RATE`:
+    case LOAD_RATE:
       return extend(state, {
         exchangeRate: action.payload,
       });
-    case `CHANGE_SALE_SYMBOL`:
+    case CHANGE_SALE_SYMBOL:
       return extend(state, {
         saleSymbol: action.payload,
       });
-    case `CHANGE_BUY_SYMBOL`:
+    case CHANGE_BUY_SYMBOL:
       return extend(state, {
         buySymbol: action.payload,
       });
-    case `CHANGE_COURSE`:
-      // console.log(action.payload);
+    case CHANGE_COURSE:
       return extend(state, {
-        currencyToSale: action.payload.sale,
-        currencyToBuy: action.payload.buy,
+        amountToSale: action.payload.sale,
+        amountToBuy: action.payload.buy,
       });
-    // case `CHANGE_TO_SALE`:
-    //   return extend(state, {
-    //     currencyToSale: action.payload,
-    //   });
-    // case `CHANGE_TO_BUY`:
-    //   return extend(state, {
-    //     currencyToBuy: action.payload,
-    //   });
-    case `RESET_CURRENCY`:
-      return extend(state, {
-        currencyToSale: 1,
-        currencyToBuy: 1,
-      });
-    case `CHANGE_LOADING`:
+    case CHANGE_LOADING:
       return extend(state, {
         isLoading: action.payload,
       });

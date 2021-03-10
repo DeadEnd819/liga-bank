@@ -2,65 +2,62 @@ import React, {useEffect, useCallback} from 'react';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import FormItem from '../form-item/form-item';
+import Wrapper from '../wrapper/wrapper';
 import {BASE_SYMBOLS, MAX_DAYS} from '../../const';
 import {getMinDate, getDateTime} from '../../utils';
-
 import {
   getDate,
   getRate,
   getSaleSymbol,
   getBuySymbol,
-  getCurrencyToSale,
-  getCurrencyToBuy,
+  getAmountToSale,
+  getAmountToBuy,
   getLoadingFlag,
   getCurrentData
-} from "../../store/selectors";
-import {fetchData} from "../../store/api-actions";
-import {setDate, setSaleSymbol, setBuySymbol, setCourse, setLoadingFlag, setHistory} from "../../store/action";
-
-import "react-datepicker/dist/react-datepicker.css";
+} from '../../store/selectors';
+import {fetchData} from '../../store/api-actions';
+import {setDate, setSaleSymbol, setBuySymbol, setCourse, setLoadingFlag, setHistory} from '../../store/action';
+import 'react-datepicker/dist/react-datepicker.css';
 import arrows from '../../img/icon-arrows.svg'
 import calendar from '../../img/icon-calendar.svg'
 
 const Form = ({
-                dateTest,
-                rateTest,
+                date,
+                rate,
                 saleSymbol,
                 buySymbol,
-                currencyToSale,
-                currencyToBuy,
+                amountToSale,
+                amountToBuy,
                 currentData,
-                isLoadingTest,
-                setDateTest,
+                isLoading,
+                setDate,
                 setSaleSymbol,
                 setBuySymbol,
                 setCourse,
-                loadDataTest,
+                loadData,
                 setHistory
 }) => {
   useEffect(() => {
-    loadDataTest();
+    loadData();
   }, []);
 
   useEffect(() => {
-    if (rateTest) {
-      setCourse(1 , rateTest);
+    if (rate) {
+      setCourse(1 , rate);
     }
-  }, [rateTest]);
+  }, [rate]);
 
   useEffect(() => {
-    if (saleSymbol !== null && buySymbol !== null) {
-      loadDataTest(saleSymbol, buySymbol, dateTest);
-    }
-  }, [dateTest, saleSymbol, buySymbol]);
+    loadData(saleSymbol, buySymbol, date);
+  }, [date, saleSymbol, buySymbol]);
 
-  const handleFromAmountChange = useCallback ((evt) => {
-    setCourse(+evt.target.value, (evt.target.value * rateTest));
-  },[rateTest]);
+  const handleSaleAmountChange = useCallback ((evt) => {
+    setCourse(+evt.target.value, (evt.target.value * rate));
+  },[rate]);
 
-  const handleToAmountChange = useCallback ((evt) => {
-    setCourse((evt.target.value / rateTest), +evt.target.value);
-  }, [rateTest]);
+  const handleBuyAmountChange = useCallback ((evt) => {
+    setCourse((evt.target.value / rate), +evt.target.value);
+  }, [rate]);
 
   const handleFormSubmit = useCallback ((evt) => {
     evt.preventDefault();
@@ -69,58 +66,58 @@ const Form = ({
 
   return (
     <form className="converter__form form" onSubmit={handleFormSubmit}>
-      <div className="form__wrapper">
+      <Wrapper name={`form`}>
         <FormItem
           currencyOptions={BASE_SYMBOLS}
           selectedCurrency={saleSymbol}
           onChangeCurrency={(evt) => setSaleSymbol(evt.target.value)}
-          onChangeAmount={handleFromAmountChange}
-          amount={currencyToSale}
+          onChangeAmount={handleSaleAmountChange}
+          amount={amountToSale}
           labelId={`sale`}
           labelText={`У меня есть`}
-          disabled={isLoadingTest}
+          disabled={isLoading}
         />
         <FormItem
           currencyOptions={BASE_SYMBOLS}
           selectedCurrency={buySymbol}
           onChangeCurrency={(evt) => setBuySymbol(evt.target.value)}
-          onChangeAmount={handleToAmountChange}
-          amount={currencyToBuy}
+          onChangeAmount={handleBuyAmountChange}
+          amount={amountToBuy}
           labelId={`buy`}
           labelText={`Хочу приобрести`}
-          disabled={isLoadingTest}
+          disabled={isLoading}
         />
         <img className="form__icon form__icon--arrows" src={arrows} alt="Иконка стрелки"/>
-      </div>
-      <div className="form__wrapper">
+      </Wrapper>
+      <Wrapper name={`form`}>
         <DatePicker
-          selected={dateTest}
+          selected={date}
           minDate={getMinDate(new Date(), MAX_DAYS)}
           maxDate={new Date()}
-          onChange={(date) => setDateTest(date)}
+          onChange={(date) => setDate(date)}
           dateFormat="dd.MM.yyyy"
           className="form__calendar"
         />
         <button className="form__calendar-button button" type="submit">Сохранить результат</button>
         <img className="form__icon form__icon--calendar" src={calendar} alt="Иконка календарь"/>
-      </div>
+      </Wrapper>
     </form>
   );
 };
 
 const mapStateToProps = (store) => ({
-  dateTest: getDate(store),
-  rateTest: getRate(store),
+  date: getDate(store),
+  rate: getRate(store),
   saleSymbol: getSaleSymbol(store),
   buySymbol: getBuySymbol(store),
-  currencyToSale: getCurrencyToSale(store),
-  currencyToBuy: getCurrencyToBuy(store),
-  isLoadingTest: getLoadingFlag(store),
+  amountToSale: getAmountToSale(store),
+  amountToBuy: getAmountToBuy(store),
+  isLoading: getLoadingFlag(store),
   currentData: getCurrentData(store),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setDateTest(date) {
+  setDate(date) {
     dispatch(setDate(date));
   },
   setSaleSymbol(symbol) {
@@ -132,7 +129,7 @@ const mapDispatchToProps = (dispatch) => ({
   setCourse(sale, buy) {
     dispatch(setCourse(+sale.toFixed(4), +buy.toFixed(4)));
   },
-  loadDataTest(saleSymbol, buySymbol, date) {
+  loadData(saleSymbol, buySymbol, date) {
     dispatch(setLoadingFlag(true));
     dispatch(fetchData(saleSymbol, buySymbol, getDateTime(date)));
   },

@@ -1,6 +1,6 @@
-import {combineReducers} from "redux";
-import {data} from "./data/data";
-import {history} from "./history/history";
+import {combineReducers} from 'redux';
+import {data} from './data/data';
+import {history} from './history/history';
 
 export const NameSpace = {
   DATA: `DATA`,

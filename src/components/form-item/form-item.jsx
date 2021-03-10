@@ -27,7 +27,6 @@ const FormItem = (props) => {
           max="99999999"
           disabled={disabled}
         />
-
         <div className="form__select-wrapper">
           <select className="form__select" value={selectedCurrency} onChange={onChangeCurrency} disabled={disabled}>
             {currencyOptions.map((option, index) => (

@@ -1,15 +1,16 @@
 import React from 'react';
-import Form from "../form/form";
-import History from "../history/history";
+import Form from '../form/form';
+import History from '../history/history';
+import Wrapper from '../wrapper/wrapper';
 
 const Converter = () => {
   return (
     <section className="main__converter converter">
-      <div className="converter__wrapper">
+      <Wrapper name={`converter`}>
         <h2 className="converter__title">Конвертер валют</h2>
         <Form />
         <History />
-      </div>
+      </Wrapper>
     </section>
   );
 };

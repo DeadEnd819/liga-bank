@@ -5,8 +5,7 @@ import {getHistory} from '../../store/selectors';
 import {clearHistory} from '../../store/action';
 
 const History = ({history, clearHistory}) => {
-  const items = !history.length ?
-    <li><p>Нет данных</p></li> :
+  const items = !history.length ? <li><p>Нет данных</p></li> :
     history.map((data, index) => <HistoryItem key={data + index} data={data} />);
 
   return (

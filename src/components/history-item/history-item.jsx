@@ -1,6 +1,6 @@
 import React from 'react';
 import {normalizeAmount} from '../../utils';
-import arrow from "../../img/icon-arrow.svg";
+import arrow from '../../img/icon-arrow.svg';
 
 const HistoryItem = ({data}) => {
   const  {date, sale, buy} = data;
