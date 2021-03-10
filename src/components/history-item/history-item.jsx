@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {normalizeAmount} from '../../utils';
 import arrow from '../../img/icon-arrow.svg';
 
@@ -16,5 +17,20 @@ const HistoryItem = ({data}) => {
     </li>
   );
 };
+
+HistoryItem.propTypes = {
+  data: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    sale: PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }).isRequired,
+    buy: PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
 
 export default HistoryItem;

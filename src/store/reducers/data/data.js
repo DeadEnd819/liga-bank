@@ -1,5 +1,5 @@
 import {extend} from '../../../utils';
-import {ActionType, BASE_SYMBOLS} from '../../../const';
+import {ActionType, BASE_RATE, BASE_SYMBOLS} from '../../../const';
 
 const {
   CHANGE_DATE,
@@ -12,12 +12,12 @@ const {
 
 const initialState = {
   date: new Date(),
-  exchangeRate: null,
+  exchangeRate: BASE_RATE,
   saleSymbol: BASE_SYMBOLS[0],
   buySymbol: BASE_SYMBOLS[1],
-  amountToSale : 1,
-  amountToBuy: 1,
-  isLoading: null,
+  amountToSale : BASE_RATE,
+  amountToBuy: BASE_RATE,
+  isLoading: true,
 };
 
 const data = (state = initialState, action) => {

@@ -1,15 +1,18 @@
 import React from 'react';
-import Header from '../header/header';
-import Main from '../main/main';
-import Footer from '../footer/footer';
+import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
+import ConverterScreen from '../converter-screen/converter-screen';
+import ErrorScreen from "../error-screen/error-screen";
 
 const App = () => {
   return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
+    <Router>
+      <Switch>
+        <Route exact path={`/`}>
+          <ConverterScreen />
+        </Route>
+        <Route render={() => <ErrorScreen />}/>
+      </Switch>
+    </Router>
   );
 };
 

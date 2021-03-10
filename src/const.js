@@ -8,6 +8,7 @@ import phone from './img/icon-phone.svg'
 export const BACKEND_URL = `https://api.exchangeratesapi.io`;
 export const REQUEST_TIMEOUT = 5000;
 export const MAX_DAYS = 7;
+export const BASE_RATE = 1;
 export const ACTIVE_PAGE = `Конвертер валют`;
 export const NAVIGATION_TITLES = [`Услуги`, `Рассчитать кредит`, `Конвертер валют`, `Контакты`, `Задать вопрос`];
 export const BASE_SYMBOLS = [`RUB`, `USD`, `EUR`, `GBP`, `CNY`];

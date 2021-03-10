@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import HistoryItem from '../history-item/history-item';
 import {getHistory} from '../../store/selectors';
@@ -17,6 +18,21 @@ const History = ({history, clearHistory}) => {
       <button className="history__button button" onClick={() => clearHistory()}>Очистить историю</button>
     </div>
   );
+};
+
+History.history = {
+  currentData: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    sale: PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }).isRequired,
+    buy: PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+  clearHistory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

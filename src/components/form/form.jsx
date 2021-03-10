@@ -1,9 +1,10 @@
 import React, {useEffect, useCallback} from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import FormItem from '../form-item/form-item';
 import Wrapper from '../wrapper/wrapper';
-import {BASE_SYMBOLS, MAX_DAYS} from '../../const';
+import {BASE_RATE, BASE_SYMBOLS, MAX_DAYS} from '../../const';
 import {getMinDate, getDateTime} from '../../utils';
 import {
   getDate,
@@ -16,7 +17,15 @@ import {
   getCurrentData
 } from '../../store/selectors';
 import {fetchData} from '../../store/api-actions';
-import {setDate, setSaleSymbol, setBuySymbol, setCourse, setLoadingFlag, setHistory} from '../../store/action';
+import {
+  setDate,
+  setExchangeRate,
+  setSaleSymbol,
+  setBuySymbol,
+  setCourse,
+  setLoadingFlag,
+  setHistory
+} from '../../store/action';
 import 'react-datepicker/dist/react-datepicker.css';
 import arrows from '../../img/icon-arrows.svg'
 import calendar from '../../img/icon-calendar.svg'
@@ -31,6 +40,7 @@ const Form = ({
                 currentData,
                 isLoading,
                 setDate,
+                resetExchangeRate,
                 setSaleSymbol,
                 setBuySymbol,
                 setCourse,
@@ -43,11 +53,16 @@ const Form = ({
 
   useEffect(() => {
     if (rate) {
-      setCourse(1 , rate);
+      setCourse(BASE_RATE , rate);
     }
   }, [rate]);
 
   useEffect(() => {
+    if (saleSymbol === buySymbol) {
+      resetExchangeRate();
+      return;
+    }
+
     loadData(saleSymbol, buySymbol, date);
   }, [date, saleSymbol, buySymbol]);
 
@@ -90,19 +105,51 @@ const Form = ({
         <img className="form__icon form__icon--arrows" src={arrows} alt="Иконка стрелки"/>
       </Wrapper>
       <Wrapper name={`form`}>
+        <label className="visually-hidden" htmlFor="calendar">
+          Выберите дату
+        </label>
         <DatePicker
-          selected={date}
+          className="form__calendar"
+          id="calendar"
+          dateFormat="dd.MM.yyyy"
           minDate={getMinDate(new Date(), MAX_DAYS)}
           maxDate={new Date()}
+          selected={date}
           onChange={(date) => setDate(date)}
-          dateFormat="dd.MM.yyyy"
-          className="form__calendar"
         />
         <button className="form__calendar-button button" type="submit">Сохранить результат</button>
         <img className="form__icon form__icon--calendar" src={calendar} alt="Иконка календарь"/>
       </Wrapper>
     </form>
   );
+};
+
+Form.propTypes = {
+  date: PropTypes.instanceOf(Date),
+  rate: PropTypes.number.isRequired,
+  saleSymbol: PropTypes.string.isRequired,
+  buySymbol: PropTypes.string.isRequired,
+  amountToSale: PropTypes.number.isRequired,
+  amountToBuy: PropTypes.number.isRequired,
+  currentData: PropTypes.shape({
+    date: PropTypes.string.isRequired,
+    sale: PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }).isRequired,
+    buy: PropTypes.shape({
+      symbol: PropTypes.string.isRequired,
+      amount: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  setDate: PropTypes.func.isRequired,
+  resetExchangeRate: PropTypes.func.isRequired,
+  setSaleSymbol: PropTypes.func.isRequired,
+  setBuySymbol: PropTypes.func.isRequired,
+  setCourse: PropTypes.func.isRequired,
+  loadData: PropTypes.func.isRequired,
+  setHistory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({
@@ -119,6 +166,10 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   setDate(date) {
     dispatch(setDate(date));
+  },
+  resetExchangeRate() {
+    dispatch(setExchangeRate(BASE_RATE));
+    dispatch(setCourse(BASE_RATE, BASE_RATE));
   },
   setSaleSymbol(symbol) {
     dispatch(setSaleSymbol(symbol));

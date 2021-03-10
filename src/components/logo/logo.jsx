@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import logo from '../../img/logo.svg'
 
 const Logo = ({block}) => {
@@ -10,6 +11,10 @@ const Logo = ({block}) => {
       </a>
     </div>
   );
+};
+
+Logo.propTypes = {
+  block: PropTypes.string.isRequired,
 };
 
 export default Logo;

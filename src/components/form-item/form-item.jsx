@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import select from '../../img/icon-select.svg'
 
 const FormItem = (props) => {
@@ -28,7 +29,13 @@ const FormItem = (props) => {
           disabled={disabled}
         />
         <div className="form__select-wrapper">
-          <select className="form__select" value={selectedCurrency} onChange={onChangeCurrency} disabled={disabled}>
+          <label className="visually-hidden" htmlFor={`select-${labelId}`}>Выбор валюты</label>
+          <select
+            className="form__select"
+            id={`select-${labelId}`}
+            value={selectedCurrency}
+            onChange={onChangeCurrency}
+            disabled={disabled}>
             {currencyOptions.map((option, index) => (
               <option key={option + index} value={option}>{option}</option>
             ))}
@@ -38,6 +45,17 @@ const FormItem = (props) => {
       </div>
     </fieldset>
   );
+};
+
+FormItem.propTypes = {
+  currencyOptions: PropTypes.arrayOf(PropTypes.string.isRequired),
+  selectedCurrency: PropTypes.string.isRequired,
+  onChangeCurrency: PropTypes.func.isRequired,
+  onChangeAmount: PropTypes.func.isRequired,
+  amount: PropTypes.number.isRequired,
+  labelId: PropTypes.string.isRequired,
+  labelText: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 export default FormItem;
