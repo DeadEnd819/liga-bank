@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {ReactSVG} from 'react-svg';
 import NavigationItem from '../navigation-item/navigation-item';
-import login from '../../img/icon-login.svg'
+import login from '../../img/icon-login.svg';
 import {NAVIGATION_ITEMS, ACTIVE_PAGE, AppRoute} from '../../const';
 
 const MainNavigation = () => {

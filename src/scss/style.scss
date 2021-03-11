@@ -1,32 +1,18 @@
-//********  Global ************//
 @import "./base/normalize.scss";
 @import "./base/fonts.scss";
 @import "./utils/variables";
 @import "./utils/mixins";
 @import "./base/global.scss";
 @import "./layout/button.scss";;
-//*******************************
-
-//********  Header ************//
 @import "./layout/header.scss";
 @import "./layout/main-nav.scss";
-//*******************************
-
-//********  Promo ************//
 @import "./layout/promo.scss";
-//*******************************
-
-//********  Converter *********//
 @import "./layout/converter.scss";
 @import "./layout/form.scss";
 @import "./layout/history.scss";
-//*******************************
-
-//********  Footer ************//
 @import "./layout/footer.scss";
 @import "./layout/copyright.scss";
 @import "layout/footer-nav";
 @import "./layout/contacts.scss";
 @import "./layout/social.scss";
-//*******************************
 @import "./layout/error.scss";

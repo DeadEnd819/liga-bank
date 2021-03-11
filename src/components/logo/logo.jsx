@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
 import {AppRoute} from '../../const';
-import logo from '../../img/logo.svg'
+import logo from '../../img/logo.svg';
 
 const Logo = ({block}) => {
   return (

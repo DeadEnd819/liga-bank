@@ -1,6 +1,6 @@
 import React, {useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import DatePicker from 'react-datepicker';
 import {ReactSVG} from 'react-svg';
 import FormItem from '../form-item/form-item';
@@ -29,34 +29,34 @@ import {
 } from '../../store/action';
 import {fetchData} from '../../store/api-actions';
 import 'react-datepicker/dist/react-datepicker.css';
-import arrows from '../../img/icon-arrows.svg'
+import arrows from '../../img/icon-arrows.svg';
 
 const Form = ({
-                date,
-                rate,
-                saleSymbol,
-                buySymbol,
-                amountToSale,
-                amountToBuy,
-                currentData,
-                isLoading,
-                setDate,
-                resetExchangeRate,
-                setSaleSymbol,
-                setBuySymbol,
-                setCourse,
-                loadData,
-                setHistory
+  date,
+  rate,
+  saleSymbol,
+  buySymbol,
+  amountToSale,
+  amountToBuy,
+  currentData,
+  isLoading,
+  setDate,
+  resetExchangeRate,
+  setSaleSymbol,
+  setBuySymbol,
+  setCourse,
+  loadData,
+  setHistory
 }) => {
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   useEffect(() => {
     if (rate) {
-      setCourse(BASE_RATE , rate);
+      setCourse(BASE_RATE, rate);
     }
-  }, [rate]);
+  }, [rate, setCourse]);
 
   useEffect(() => {
     if (saleSymbol === buySymbol) {
@@ -65,20 +65,20 @@ const Form = ({
     }
 
     loadData(saleSymbol, buySymbol, date);
-  }, [date, saleSymbol, buySymbol]);
+  }, [date, saleSymbol, buySymbol, loadData, resetExchangeRate]);
 
-  const handleSaleAmountChange = useCallback ((evt) => {
+  const handleSaleAmountChange = useCallback((evt) => {
     setCourse(+evt.target.value, (evt.target.value * rate));
-  },[rate]);
+  },[rate, setCourse]);
 
-  const handleBuyAmountChange = useCallback ((evt) => {
+  const handleBuyAmountChange = useCallback((evt) => {
     setCourse((evt.target.value / rate), +evt.target.value);
-  }, [rate]);
+  },[rate, setCourse]);
 
-  const handleFormSubmit = useCallback ((evt) => {
+  const handleFormSubmit = useCallback((evt) => {
     evt.preventDefault();
     setHistory(currentData);
-  }, [currentData]);
+  }, [currentData, setHistory]);
 
   return (
     <form className="converter__form form" onSubmit={handleFormSubmit}>
@@ -116,7 +116,7 @@ const Form = ({
           minDate={getMinDate(new Date(), MAX_DAYS)}
           maxDate={new Date()}
           selected={date}
-          onChange={(date) => setDate(date)}
+          onChange={(newDate) => setDate(newDate)}
         />
         <button className="form__calendar-button button" type="submit">Сохранить результат</button>
       </Wrapper>

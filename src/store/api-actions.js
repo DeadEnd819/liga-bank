@@ -7,9 +7,9 @@ import {
 } from './action';
 
 export const fetchData = (
-  fromCurrency = BASE_SYMBOLS[0],
-  toCurrency = BASE_SYMBOLS[1],
-  date = BASE_DATE
+    fromCurrency = BASE_SYMBOLS[0],
+    toCurrency = BASE_SYMBOLS[1],
+    date = BASE_DATE
 ) => (dispatch, _getState, api) => (
   api.get(`/${date}?base=${fromCurrency}&symbols=${toCurrency}`)
     .then(({data}) => {

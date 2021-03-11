@@ -21,8 +21,8 @@ const History = ({history, clearHistory}) => {
   );
 };
 
-History.history = {
-  currentData: DataProp.isRequired,
+History.propTypes = {
+  history: PropTypes.arrayOf(DataProp.isRequired).isRequired,
   clearHistory: PropTypes.func.isRequired,
 };
 

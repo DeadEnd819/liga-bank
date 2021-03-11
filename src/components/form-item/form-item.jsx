@@ -11,7 +11,7 @@ const FormItem = (props) => {
     labelId,
     labelText,
     disabled
-  } = props
+  } = props;
 
   return (
     <fieldset className="form__fieldset">

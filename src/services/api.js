@@ -4,8 +4,7 @@ import {BACKEND_URL, REQUEST_TIMEOUT} from '../const';
 export const createAPI = () => {
   const api = axios.create({
     baseURL: BACKEND_URL,
-    timeout: REQUEST_TIMEOUT,
-    Header: { "Access-Control-Allow-Origin": "origin-list" }
+    timeout: REQUEST_TIMEOUT
   });
 
   const onSuccess = (response) => response;

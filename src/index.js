@@ -12,15 +12,15 @@ import './scss/style.scss';
 const api = createAPI();
 
 const store = createStore(
-  rootReducer,
-  composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument(api))
-  )
+    rootReducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.querySelector(`#root`)
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.querySelector(`#root`)
 );

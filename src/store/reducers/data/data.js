@@ -15,7 +15,7 @@ const initialState = {
   exchangeRate: BASE_RATE,
   saleSymbol: BASE_SYMBOLS[0],
   buySymbol: BASE_SYMBOLS[1],
-  amountToSale : BASE_RATE,
+  amountToSale: BASE_RATE,
   amountToBuy: BASE_RATE,
   isLoading: true,
 };

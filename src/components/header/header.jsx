@@ -5,12 +5,12 @@ import Wrapper from '../wrapper/wrapper';
 
 const Header = () => {
   return (
-      <header className="header">
-        <Wrapper name={`header`}>
-          <Logo block={`header`} />
-          <MainNavigation />
-        </Wrapper>
-      </header>
+    <header className="header">
+      <Wrapper name={`header`}>
+        <Logo block={`header`} />
+        <MainNavigation />
+      </Wrapper>
+    </header>
   );
 };
 

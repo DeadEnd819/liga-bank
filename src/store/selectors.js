@@ -33,23 +33,23 @@ export const getHistory = (state) => {
   return state.HISTORY.history;
 };
 
-export const getCurrentData  = createSelector(
-  getDate,
-  getSaleSymbol,
-  getBuySymbol,
-  getAmountToSale,
-  getAmountToBuy,
-  (date, saleSymbol, buySymbol, amountToSale, amountToBuy) => {
-    return {
-      date: getDateToHistory(date),
-      sale: {
-        symbol: saleSymbol,
-        amount: amountToSale,
-      },
-      buy: {
-        symbol: buySymbol,
-        amount: amountToBuy,
-      }
-    };
-  }
+export const getCurrentData = createSelector(
+    getDate,
+    getSaleSymbol,
+    getBuySymbol,
+    getAmountToSale,
+    getAmountToBuy,
+    (date, saleSymbol, buySymbol, amountToSale, amountToBuy) => {
+      return {
+        date: getDateToHistory(date),
+        sale: {
+          symbol: saleSymbol,
+          amount: amountToSale,
+        },
+        buy: {
+          symbol: buySymbol,
+          amount: amountToBuy,
+        }
+      };
+    }
 );

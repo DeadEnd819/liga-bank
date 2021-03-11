@@ -1,9 +1,9 @@
-import facebook from './img/icon-facebook.svg'
-import instagram from './img/icon-instagram.svg'
-import twitter from './img/icon-twitter.svg'
-import youtube from './img/icon-youtube.svg'
-import mobile from './img/icon-mobile.svg'
-import phone from './img/icon-phone.svg'
+import facebook from './img/icon-facebook.svg';
+import instagram from './img/icon-instagram.svg';
+import twitter from './img/icon-twitter.svg';
+import youtube from './img/icon-youtube.svg';
+import mobile from './img/icon-mobile.svg';
+import phone from './img/icon-phone.svg';
 
 export const BACKEND_URL = `https://api.exchangeratesapi.io`;
 export const REQUEST_TIMEOUT = 5000;
@@ -70,7 +70,7 @@ export const CONTACTS_ITEMS = [
     text: `Бесплатный для всех городов России`,
     icon: phone
   }
-]
+];
 
 export const SOCIAL_LINKS = [
   {
@@ -93,4 +93,4 @@ export const SOCIAL_LINKS = [
     src: `https://www.youtube.com`,
     icon: youtube
   },
-]
+];
