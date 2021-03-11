@@ -1,6 +1,6 @@
 #Info
 
-Время работы над проектом - 33 часов 8 минут.
+Время работы над проектом - 40 часов 8 минут.
 
 ## Getting Started with Create React ConverterScreen
 
