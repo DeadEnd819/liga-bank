@@ -1,4 +1,4 @@
-@mixin base-font($weight: 400) {
+@mixin base-font($weight: $regular) {
   font-family: "Roboto", "Arial", sans-serif;
   font-weight: $weight;
 }

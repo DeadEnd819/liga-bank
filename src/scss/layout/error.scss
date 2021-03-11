@@ -1,0 +1,16 @@
+.error {
+  width: 236px;
+  height: 182px;
+  margin: 0 auto;
+  padding-top: 150px;
+  font-size: 32px;
+}
+
+.error__link {
+  color: $button-color;
+
+  &:focus,
+  &:hover {
+    opacity: 0.5;
+  }
+}

@@ -24,26 +24,36 @@ export const ActionType = {
   CLEAR_HISTORY: `CLEAR_HISTORY`,
 };
 
+export const AppRoute = {
+  ROOT: `/`,
+  SERVICES: `/services`,
+  CREDIT: `/credit`,
+  CONVERTER: `/converter`,
+  CONTACTS: `/contacts`,
+  QUESTION: `/question`,
+  AUTHORIZATION: `/authorization`
+};
+
 export const NAVIGATION_ITEMS = [
   {
     name: `Услуги`,
-    href: `/services`
+    href: AppRoute.SERVICES
   },
   {
     name: `Рассчитать кредит`,
-    href: `/credit`
+    href: AppRoute.CREDIT
   },
   {
     name: `Конвертер валют`,
-    href: `/converter`
+    href: AppRoute.CONVERTER
   },
   {
     name: `Контакты`,
-    href: `/contacts`
+    href: AppRoute.CONTACTS
   },
   {
     name: `Задать вопрос`,
-    href: `/question`
+    href: AppRoute.QUESTION
   }
 ];
 

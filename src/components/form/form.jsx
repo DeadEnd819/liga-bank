@@ -7,6 +7,7 @@ import FormItem from '../form-item/form-item';
 import Wrapper from '../wrapper/wrapper';
 import {BASE_RATE, BASE_SYMBOLS, MAX_DAYS} from '../../const';
 import {getMinDate, getDateTime} from '../../utils';
+import {DataProp} from '../../prop-types/prop-types';
 import {
   getDate,
   getRate,
@@ -17,7 +18,6 @@ import {
   getLoadingFlag,
   getCurrentData
 } from '../../store/selectors';
-import {fetchData} from '../../store/api-actions';
 import {
   setDate,
   setExchangeRate,
@@ -27,6 +27,7 @@ import {
   setLoadingFlag,
   setHistory
 } from '../../store/action';
+import {fetchData} from '../../store/api-actions';
 import 'react-datepicker/dist/react-datepicker.css';
 import arrows from '../../img/icon-arrows.svg'
 
@@ -130,17 +131,7 @@ Form.propTypes = {
   buySymbol: PropTypes.string.isRequired,
   amountToSale: PropTypes.number.isRequired,
   amountToBuy: PropTypes.number.isRequired,
-  currentData: PropTypes.shape({
-    date: PropTypes.string.isRequired,
-    sale: PropTypes.shape({
-      symbol: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }).isRequired,
-    buy: PropTypes.shape({
-      symbol: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+  currentData: DataProp.isRequired,
   isLoading: PropTypes.bool.isRequired,
   setDate: PropTypes.func.isRequired,
   resetExchangeRate: PropTypes.func.isRequired,

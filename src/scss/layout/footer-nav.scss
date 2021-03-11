@@ -11,11 +11,11 @@
   @include base-font(500);
   display: block;
   line-height: 23px;
-  color: #1F1E25;
+  color: $main-text-color;
 
   &--active,
   &:focus,
   &:hover {
-    color: #2C36F2;
+    color: $button-color;
   }
 }

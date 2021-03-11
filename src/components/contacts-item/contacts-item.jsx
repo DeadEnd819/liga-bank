@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {ReactSVG} from 'react-svg';
+import {ContactsItemProp} from '../../prop-types/prop-types';
 
 const ContactsItem = ({item}) => {
   const {type, number, text, icon} = item;
@@ -17,12 +17,7 @@ const ContactsItem = ({item}) => {
 };
 
 ContactsItem.propTypes = {
-  item: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
-  }).isRequired,
+  item: ContactsItemProp.isRequired,
 };
 
 export default ContactsItem;

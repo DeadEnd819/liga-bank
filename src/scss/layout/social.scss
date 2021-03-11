@@ -9,10 +9,10 @@
 .social__link {
   position: relative;
   display: block;
-  color: #1F1E25;
+  color: $main-text-color;
 
   &:focus,
   &:hover {
-    color: #2C36F2;
+    color: $button-color;
   }
 }

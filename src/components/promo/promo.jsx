@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Wrapper from '../wrapper/wrapper';
+import {AppRoute} from '../../const';
 
 const Promo = () => {
   return (
@@ -10,7 +11,7 @@ const Promo = () => {
           <h2 className="promo__title">Лига Банк</h2>
           <p className="promo__text">Кредиты на любой случай</p>
           <Link
-            to={`/credit`}
+            to={AppRoute.CREDIT}
             className="promo__link button button--light"
             aria-label="Перейти на страницу расчета кредита"
           >

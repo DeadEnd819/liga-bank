@@ -3,7 +3,7 @@
   background-image: url("../../img/promo-background.svg");
   background-position: center bottom;
   background-repeat: no-repeat;
-  background-color: #2C36F2;
+  background-color: $button-color;
 }
 
 .promo__wrapper {
@@ -18,9 +18,14 @@
   min-height: 286px;
   padding-top: 41px;
   padding-left: 171px;
-  background-image: url("../../img/cards.png");
+  background-image: url("../../img/cards@1x.png");
   background-position: top right;
   background-repeat: no-repeat;
+
+  @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    background-image: url("../../img/cards@1x.png");
+    background-size: 444px auto;
+  }
 }
 
 .promo__title,
@@ -29,7 +34,7 @@
 }
 
 .promo__title {
-  @include base-font(700);
+  @include base-font($bold);
   font-size: 54px;
   line-height: 63px;
   color: #F6F7FF;
@@ -40,7 +45,7 @@
   margin-bottom: 34px;
   font-size: 22px;
   line-height: 26px;
-  color: #E0E1EA;
+  color: $promo-text-color;
 }
 
 .promo__link {

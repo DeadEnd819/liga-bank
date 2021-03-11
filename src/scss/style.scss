@@ -1,6 +1,7 @@
 //********  Global ************//
 @import "./base/normalize.scss";
 @import "./base/fonts.scss";
+@import "./utils/variables";
 @import "./utils/mixins";
 @import "./base/global.scss";
 @import "./layout/button.scss";;
@@ -28,3 +29,4 @@
 @import "./layout/contacts.scss";
 @import "./layout/social.scss";
 //*******************************
+@import "./layout/error.scss";

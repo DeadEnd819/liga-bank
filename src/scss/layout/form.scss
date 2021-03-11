@@ -18,7 +18,7 @@
 
 .form__label {
   @include reset-text;
-  @include base-font(500);
+  @include base-font($medium);
   display: block;
   margin-bottom: 23px;
   font-size: 22px;
@@ -40,9 +40,9 @@
   min-height: 60px;
   font: inherit;
   line-height: 34px;
-  color: #000000;
+  color: $input-text-color;
   background-color: transparent;
-  border: 1px solid #1F1E25;
+  border: 1px solid $main-text-color;
   border-radius: 4px;
   outline: none;
   appearance: none;
@@ -59,14 +59,14 @@
 .form__calendar {
   &:focus,
   &:hover {
-    box-shadow: inset 0 0 3px 1px #2C36F2;
+    box-shadow: inset 0 0 3px 1px $button-color;
     cursor: pointer;
   }
 }
 
 .form__input,
 .form__calendar {
-  @include base-font(500);
+  @include base-font($medium);
   text-align: center;
   margin-right: 15px;
   padding: 11px 0;
@@ -74,9 +74,8 @@
   font-size: 24px;
 }
 
-
 .form__calendar {
-  @include base-font(400);
+  @include base-font($regular);
   padding: 5px 107px 0 59px;
   background-image: url("../../img/icon-calendar.svg");
   background-repeat: no-repeat;

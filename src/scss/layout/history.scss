@@ -1,12 +1,12 @@
 .history {
   box-sizing: border-box;
   padding: 39px 70px;
-  background-color: #F6F7FF;
+  background-color: $background-color;
 }
 
 .history__title {
   @include reset-text;
-  @include base-font(500);
+  @include base-font($medium);
   margin-bottom: 44px;
   font-size: 28px;
   line-height: 49px;
@@ -28,8 +28,8 @@
     right: 50%;
     width: 0;
     height: 289px;
-    border: 1px solid #C1C2CA;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid $border-color;
+    box-shadow: 0 4px 4px $shadow;
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialItem from "../social-item/social-item";
+import SocialItem from '../social-item/social-item';
 import {SOCIAL_LINKS} from '../../const';
 
 const Social = () => {

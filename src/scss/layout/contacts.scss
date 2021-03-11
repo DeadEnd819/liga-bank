@@ -26,14 +26,14 @@
 }
 
 .contacts__link {
-  @include base-font(500);
+  @include base-font($medium);
   position: relative;
   line-height: 22px;
-  color: #1F1E25;
+  color: $main-text-color;
 
   &:focus,
   &:hover {
-    color: #2C36F2;
+    color: $button-color;
   }
 }
 
@@ -41,7 +41,7 @@
   @include reset-text;
   font-size: 12px;
   line-height: 17px;
-  color: #707C87;
+  color: $grey-text-color;
 }
 
 .contacts__icon {

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import HistoryItem from '../history-item/history-item';
 import {getHistory} from '../../store/selectors';
 import {clearHistory} from '../../store/action';
+import {DataProp} from '../../prop-types/prop-types';
 
 const History = ({history, clearHistory}) => {
   const items = !history.length ? <li><p>Нет данных</p></li> :
@@ -21,17 +22,7 @@ const History = ({history, clearHistory}) => {
 };
 
 History.history = {
-  currentData: PropTypes.shape({
-    date: PropTypes.string.isRequired,
-    sale: PropTypes.shape({
-      symbol: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }).isRequired,
-    buy: PropTypes.shape({
-      symbol: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
+  currentData: DataProp.isRequired,
   clearHistory: PropTypes.func.isRequired,
 };
 
