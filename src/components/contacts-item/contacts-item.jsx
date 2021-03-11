@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {ReactSVG} from 'react-svg';
 
 const ContactsItem = ({item}) => {
   const {type, number, text, icon} = item;
@@ -7,7 +8,7 @@ const ContactsItem = ({item}) => {
   return (
     <li className={`contacts__item contacts__item--${type}`}>
       <a className="contacts__link" href={`tel: ${number}`} aria-label={type}>
-        <img className={`contacts__icon contacts__icon--${type}`} src={icon} alt="Мобильный телефон" />
+        <ReactSVG className={`contacts__icon contacts__icon--${type}`} src={icon} />
         {number}
       </a>
       <p className="contacts__text">{text}</p>

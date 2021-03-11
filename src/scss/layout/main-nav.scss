@@ -36,15 +36,15 @@
     padding-left: 30px;
   }
 
-  &--icon {
-    position: absolute;
-    top: 7px;
-    left: 0;
-  }
-
   &--active,
   &:focus,
   &:hover {
     color: #2C36F2;
   }
+}
+
+.main-nav__link-icon {
+  position: absolute;
+  top: 7px;
+  left: 0;
 }

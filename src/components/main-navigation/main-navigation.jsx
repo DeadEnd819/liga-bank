@@ -1,14 +1,16 @@
 import React from 'react';
-import NavigationItem from "../navigation-item/navigation-item";
+import {Link} from "react-router-dom";
+import {ReactSVG} from 'react-svg';
+import NavigationItem from '../navigation-item/navigation-item';
 import login from '../../img/icon-login.svg'
-import {NAVIGATION_TITLES, ACTIVE_PAGE} from '../../const';
+import {NAVIGATION_ITEMS, ACTIVE_PAGE} from '../../const';
 
 const MainNavigation = () => {
   return (
     <nav className="header__nav main-nav">
       <ul className="main-nav__list main-nav__list--site">
-        {NAVIGATION_TITLES.map((title, index) => {
-          const isActive = title === ACTIVE_PAGE;
+        {NAVIGATION_ITEMS.map((title, index) => {
+          const isActive = title.name === ACTIVE_PAGE;
 
           return (
             <NavigationItem
@@ -22,10 +24,10 @@ const MainNavigation = () => {
       </ul>
       <ul className="main-nav__list main-nav__list--user">
         <li className="main-nav__item main-nav__item--user">
-          <a className="main-nav__link main-nav__link--user" href="#">
-            <img className="main-nav__link--icon" src={login} alt="Иконка входа" />
+          <Link to={`/authorization`} className="main-nav__link main-nav__link--user">
+            <ReactSVG className="main-nav__link-icon" src={login} />
             Войти в Интернет-банк
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

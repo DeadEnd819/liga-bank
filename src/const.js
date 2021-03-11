@@ -10,7 +10,6 @@ export const REQUEST_TIMEOUT = 5000;
 export const MAX_DAYS = 7;
 export const BASE_RATE = 1;
 export const ACTIVE_PAGE = `Конвертер валют`;
-export const NAVIGATION_TITLES = [`Услуги`, `Рассчитать кредит`, `Конвертер валют`, `Контакты`, `Задать вопрос`];
 export const BASE_SYMBOLS = [`RUB`, `USD`, `EUR`, `GBP`, `CNY`];
 export const BASE_DATE = `latest`;
 
@@ -24,6 +23,29 @@ export const ActionType = {
   UPDATED_HISTORY: `UPDATED_HISTORY`,
   CLEAR_HISTORY: `CLEAR_HISTORY`,
 };
+
+export const NAVIGATION_ITEMS = [
+  {
+    name: `Услуги`,
+    href: `/services`
+  },
+  {
+    name: `Рассчитать кредит`,
+    href: `/credit`
+  },
+  {
+    name: `Конвертер валют`,
+    href: `/converter`
+  },
+  {
+    name: `Контакты`,
+    href: `/contacts`
+  },
+  {
+    name: `Задать вопрос`,
+    href: `/question`
+  }
+];
 
 export const CONTACTS_ITEMS = [
   {

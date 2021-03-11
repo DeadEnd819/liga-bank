@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {ReactSVG} from 'react-svg';
 
 const SocialItem = ({link}) => {
   const {name, src, icon} = link;
@@ -7,7 +8,7 @@ const SocialItem = ({link}) => {
   return (
     <li className="social__item">
       <a className="social__link" href={src} aria-label={name}>
-        <img className={`social__icon social__icon--${name}`} src={icon} alt={`Мы в ${name}`} />
+        <ReactSVG className={`social__icon social__icon--${name}`} src={icon} />
       </a>
     </li>
   );

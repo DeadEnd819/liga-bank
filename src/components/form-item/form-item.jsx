@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import select from '../../img/icon-select.svg'
 
 const FormItem = (props) => {
   const {
@@ -40,7 +39,6 @@ const FormItem = (props) => {
               <option key={option + index} value={option}>{option}</option>
             ))}
           </select>
-          <img className="form__icon" src={select} alt="Выбор валюты"/>
         </div>
       </div>
     </fieldset>

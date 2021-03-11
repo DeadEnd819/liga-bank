@@ -6,34 +6,13 @@
   padding-top: 12px;
 }
 
-//.social__item {
-//
-//}
-
 .social__link {
   position: relative;
   display: block;
+  color: #1F1E25;
 
   &:focus,
   &:hover {
     color: #2C36F2;
   }
 }
-
-//.social__icon {
-//  &--facebook {
-//
-//  }
-//
-//  &--instagram {
-//
-//  }
-//
-//  &--twitter {
-//
-//  }
-//
-//  &--youtube {
-//
-//  }
-//}

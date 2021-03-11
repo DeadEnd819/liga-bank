@@ -2,6 +2,7 @@ import React, {useEffect, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
+import {ReactSVG} from 'react-svg';
 import FormItem from '../form-item/form-item';
 import Wrapper from '../wrapper/wrapper';
 import {BASE_RATE, BASE_SYMBOLS, MAX_DAYS} from '../../const';
@@ -28,7 +29,6 @@ import {
 } from '../../store/action';
 import 'react-datepicker/dist/react-datepicker.css';
 import arrows from '../../img/icon-arrows.svg'
-import calendar from '../../img/icon-calendar.svg'
 
 const Form = ({
                 date,
@@ -102,7 +102,7 @@ const Form = ({
           labelText={`Хочу приобрести`}
           disabled={isLoading}
         />
-        <img className="form__icon form__icon--arrows" src={arrows} alt="Иконка стрелки"/>
+        <ReactSVG className="form__icon form__icon--arrows" src={arrows} />
       </Wrapper>
       <Wrapper name={`form`}>
         <label className="visually-hidden" htmlFor="calendar">
@@ -118,7 +118,6 @@ const Form = ({
           onChange={(date) => setDate(date)}
         />
         <button className="form__calendar-button button" type="submit">Сохранить результат</button>
-        <img className="form__icon form__icon--calendar" src={calendar} alt="Иконка календарь"/>
       </Wrapper>
     </form>
   );

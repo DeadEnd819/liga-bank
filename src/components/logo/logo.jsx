@@ -1,14 +1,15 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
+import {ReactSVG} from 'react-svg';
 import logo from '../../img/logo.svg'
 
 const Logo = ({block}) => {
   return (
     <div className={`${block}__logo`}>
-      <a aria-label="Перейти на главную страницу">
-        <img className={`${block}__logo-image`} src={logo}
-             alt="Лига Банк - Логотип" />
-      </a>
+      <Link to={`/`} aria-label="Перейти на главную страницу">
+        <ReactSVG className={`${block}__logo-image`} src={logo} />
+      </Link>
     </div>
   );
 };
