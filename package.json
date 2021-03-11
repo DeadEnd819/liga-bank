@@ -24,7 +24,6 @@
     "reselect": "4.0.0"
   },
   "scripts": {
-    "eslint": "eslint --ext .jsx --ext .js src/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
